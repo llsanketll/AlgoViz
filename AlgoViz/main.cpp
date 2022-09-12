@@ -40,10 +40,12 @@ int main()
 		bars.push_back(bar);
 	}
 	BubbleSort* bubbleSort = new BubbleSort(bars, texts);
-	//QuickSort* quickSort = new QuickSort(bars, texts);
-	//BST* bst = new BST(bars, texts, window);
+	QuickSort* quickSort = new QuickSort(bars, texts);
+	BST* bst = new BST(bars, texts, window);
 
-	Button* button = new Button(sf::Vector2f(10, 10), sf::Color::Blue, sf::Color::Green, "Click Me", sf::Vector2f(1000, 1000));
+	Button* button = new Button(&window,sf::Vector2f(60, 60),sf::Color::Yellow, sf::Vector2f(200, 200));
+
+	sf::RectangleShape rectangle(sf::Vector2f(10, 10));
 
 
 	while (window.isOpen())
@@ -56,12 +58,26 @@ int main()
 				window.close();
 		}
 
-		//----------Sorting--------------
+		////----------Sorting--------------
 		bubbleSort->Sort(deltaTime);
 		//----------Drawing---------------
 		window.clear(sf::Color::White);
-		button->Draw(window);
+		button->draw();
 		bubbleSort->Draw(window);
+
+		//uncomment code below to see button hover action
+		//sf::Mouse mouse;
+
+
+		if (button->isButtonClicked()) {
+			std::cout << "Button Clicked" << std::endl;
+			button->setColorOnClick(sf::Color::Red);
+		}
+
+		/*while (button->isButtonHovered()) {
+			std::cout << "Button Hovered!!!" << std::endl;
+		}*/
+
 		window.display();
 		//--------------------------------
 	}

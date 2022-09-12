@@ -1,46 +1,86 @@
 #include "Button.h"
 #include <iostream>
 
-Button::Button(sf::Vector2f size, sf::Color normalColor, sf::Color clickedColor, std::string words, sf::Vector2f location) {
+//constructor
+Button::Button(sf::RenderWindow *window, sf::Vector2f size, sf::Color normalColor, sf::Vector2f location) {
+	this->window = window;
 	isClicked = false;
-	rectangle.setSize(size);
-	rectangle.setPosition(location);
-	rectangle.setFillColor(normalColor);
-	this->normalColor = normalColor;
-	this->clickedColor = clickedColor;
-	sf::Font font;
-	font.loadFromFile("../Resources/Roboto.ttf");
-	text.setFont(font);
-	text.setString(words);
-	text.setCharacterSize(24);
-	text.setPosition(location);
-	text.setFillColor(sf::Color::Black);
+	buildRectangle(size, normalColor, location);
 }
 
-void Button::checkClicked(sf::Vector2f mousePos) {
-	if (mousePos.x > rectangle.getPosition().x && mousePos.x < (rectangle.getPosition().x + rectangle.getSize().x)) {
-		if (mousePos.y > rectangle.getPosition().y && mousePos.y < (rectangle.getPosition().y + rectangle.getSize().y)) {
-			setClicked(!isClicked);
-		}
-	}
-}
-void Button::setClicked(bool which) {
-	isClicked = which;
-	if (isClicked) {
-		rectangle.setFillColor(normalColor);
-		return;
-	}
-	rectangle.setFillColor(clickedColor);
-}
-void Button::setText(std::string words) {
-	text.setString(words);
-}
+
 bool Button::getState() {
 	return isClicked;
 }
 
-void Button::Draw(sf::RenderWindow& window)
+void Button::draw()
 {
-	window.draw(rectangle);
-	//window.draw(text);
+	window->draw(*buttonRectangle);
+}
+
+void Button::setLabel(sf::String label, sf::Color labelColor)
+{
+
+}
+
+void Button::setLabel(sf::String)
+{
+}
+
+sf::Vector2f Button::getButtonLocation()
+{
+	return this->buttonLoc;
+}
+
+bool Button::isButtonHovered()
+{
+	sf::Mouse mouse;
+	sf::Vector2i mousePos = mouse.getPosition(*window);
+
+	bool xCordinateTruthCondition = mousePos.x > buttonLoc.x && mousePos.x < (buttonLoc.x + buttonSize.x);
+	bool yCoordinateTruthCondition = mousePos.y > buttonLoc.y && mousePos.y < (buttonLoc.y + buttonSize.y);
+
+
+	if (xCordinateTruthCondition && yCoordinateTruthCondition) {
+			return true;
+	}
+	return false;
+}
+
+
+bool Button::isButtonClicked()
+{
+	sf::Mouse mouse;
+	sf::Vector2i mousePos = mouse.getPosition(*window);
+
+	bool xCordinateTruthCondition = mousePos.x > buttonLoc.x && mousePos.x < (buttonLoc.x + buttonSize.x);
+	bool yCoordinateTruthCondition = mousePos.y > buttonLoc.y && mousePos.y < (buttonLoc.y + buttonSize.y);
+
+	if (xCordinateTruthCondition && yCoordinateTruthCondition) {
+			if (mouse.isButtonPressed(sf::Mouse::Left)) {
+				this->isClicked = true;
+				return true;
+			}
+	}
+	return false;
+}
+
+void Button::setColorOnHover(sf::Color color)
+{
+}
+
+
+void Button::setColorOnClick(sf::Color color)
+{
+	this->buttonRectangle->setFillColor(color);
+}
+
+void Button::buildRectangle(sf::Vector2f size, sf::Color normalColor, sf::Vector2f location)
+{
+	this->buttonLoc = location;
+	this->buttonSize = size;
+
+	this->buttonRectangle = new sf::RectangleShape(size);
+	buttonRectangle->setFillColor(normalColor);
+	buttonRectangle->setPosition(location);
 }
