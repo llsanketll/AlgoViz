@@ -15,33 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BubbleSort.cpp">
+    <ClCompile Include="src\sort\BubbleSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QuickSort.cpp">
+    <ClCompile Include="src\sort\QuickSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BST.cpp">
+    <ClCompile Include="src\tree\BST.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="src\button\Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menu\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QuickSort.h">
+    <ClInclude Include="src\sort\QuickSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BubbleSort.h">
+    <ClInclude Include="src\sort\BubbleSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BST.h">
+    <ClInclude Include="src\tree\BST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="src\button\Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\menu\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

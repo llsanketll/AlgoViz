@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <math.h>
-#include "BubbleSort.h"
-#include "QuickSort.h"
-#include "BST.h"
-#include "Button.h"
+#include "sort/BubbleSort.h"
+#include "sort/QuickSort.h"
+#include "tree/BST.h"
+#include "button/Button.h"
 
 
 int main()
@@ -18,7 +18,7 @@ int main()
 	sf::Clock clock;
 
 	sf::Font font;
-	font.loadFromFile("../Resources/Roboto.ttf");
+	font.loadFromFile("../Resources/fonts/Roboto.ttf");
 
 	std::vector<sf::RectangleShape> bars;
 	std::vector<sf::Text> texts;
@@ -62,9 +62,6 @@ int main()
 		bubbleSort->Sort(deltaTime);
 		//----------Drawing---------------
 		window.clear(sf::Color::White);
-
-		sf::Font font;
-		font.loadFromFile("arial.ttf");
 		
 		button->setText("I am a button",font ,sf::Color::Black, 15);
 		button->draw();
