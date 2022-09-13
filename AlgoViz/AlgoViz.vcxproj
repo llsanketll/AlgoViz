@@ -163,7 +163,7 @@
     <ClCompile Include="src\tree\BST.cpp" />
     <ClCompile Include="src\sort\BubbleSort.cpp" />
     <ClCompile Include="src\button\Button.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\app\main.cpp" />
     <ClCompile Include="src\sort\QuickSort.cpp" />
   </ItemGroup>
   <ItemGroup>
