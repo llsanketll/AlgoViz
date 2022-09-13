@@ -9,7 +9,7 @@
 
 int main()
 {
-	int screenHeight = 800;
+	int screenHeight = 600;
 	int screenWidth = 800;
 	float counter = 0;
 	float counter1 = 0;
@@ -43,7 +43,7 @@ int main()
 	QuickSort* quickSort = new QuickSort(bars, texts);
 	BST* bst = new BST(bars, texts, window);
 
-	Button* button = new Button(&window,sf::Vector2f(60, 60),sf::Color::Yellow, sf::Vector2f(200, 200));
+	Button* button = new Button(&window,sf::Vector2f(30, 30),sf::Color::Yellow, sf::Vector2f(200, 200));
 
 	sf::RectangleShape rectangle(sf::Vector2f(10, 10));
 
@@ -62,11 +62,14 @@ int main()
 		bubbleSort->Sort(deltaTime);
 		//----------Drawing---------------
 		window.clear(sf::Color::White);
+
+		sf::Font font;
+		font.loadFromFile("arial.ttf");
+		
+		button->setText("I am a button",font ,sf::Color::Black, 15);
 		button->draw();
 		bubbleSort->Draw(window);
 
-		//uncomment code below to see button hover action
-		//sf::Mouse mouse;
 
 
 		if (button->isButtonClicked()) {
@@ -74,40 +77,9 @@ int main()
 			button->setColorOnClick(sf::Color::Red);
 		}
 
-		/*while (button->isButtonHovered()) {
-			std::cout << "Button Hovered!!!" << std::endl;
-		}*/
-
 		window.display();
 		//--------------------------------
 	}
 
 	return 0;
 }
-
-
-
-//for (int i = 0; i < bars.size() - 1; i++)
-//{
-//	for (int j = 0; j < bars.size() - i - 1; j++)
-//	{
-//		if (bars[j].getSize().y > bars[j + 1].getSize().y)
-//		{
-//			float tempPos = bars[j].getPosition().x;
-//			bars[j].setPosition(bars[j + 1].getPosition().x, bars[j].getPosition().y);
-//			bars[j + 1].setPosition(tempPos, bars[j + 1].getPosition().y);
-
-//			auto temp = bars[j];
-//			bars[j] = bars[j + 1];
-//			bars[j + 1] = temp;
-
-//			tempPos = texts[j].getPosition().x;
-//			texts[j].setPosition(texts[j + 1].getPosition().x, texts[j].getPosition().y);
-//			texts[j + 1].setPosition(tempPos, texts[j + 1].getPosition().y);
-
-//			auto tempText = texts[j];
-//			texts[j] = texts[j + 1];
-//			texts[j + 1] = tempText;
-//		}
-//	}
-//}

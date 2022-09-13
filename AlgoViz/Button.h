@@ -4,23 +4,24 @@
 #include <SFML/System/String.hpp>
 class Button {
 private:
+	sf::Font *buttonFont;
+
 	sf::RenderWindow *window;
 	sf::Vector2f buttonLoc;
 	sf::Vector2f buttonSize;
 	sf::RectangleShape* buttonRectangle;
 	sf::Color normalColor;
 	sf::Color clickedColor;
-	sf::Text text;
+
+	sf::Text *text;
 	
 	bool isClicked;
 
 public:
+	Button(sf::RenderWindow *window);
 	Button(sf::RenderWindow *window, sf::Vector2f size, sf::Color normalColor, sf::Vector2f location);
 	bool getState();
 	void draw();
-
-	void setLabel(sf::String);
-	void setLabel(sf::String label, sf::Color labelColor);
 
 	bool isButtonHovered();
 	bool isButtonClicked();
@@ -30,7 +31,10 @@ public:
 
 	sf::Vector2f getButtonLocation();
 
+	void setText(const std::string &text,const sf::Font& font, const sf::Color& textColor, const int32_t& textSize);
+
 private:
-	void buildRectangle(sf::Vector2f size, sf::Color normalColor, sf::Vector2f location);
+	void buildButtonRect(sf::Vector2f size, sf::Color normalColor, sf::Vector2f location);
+	void buildButtonWithText();
 };
 
